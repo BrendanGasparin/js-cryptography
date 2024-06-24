@@ -14,13 +14,21 @@
     <p>A site dedicated to cryptography.</p>
     <p>This site is written in HTML, CSS, and JavaScript.</p>
     <form>
-      <select>
-        <option>- Select Algorithm -</option>
-        <option>ROT Encryption</option>
-      </select>
-      <textarea></textarea>
-      <textarea></textarea>
-      <button type="submit">Submit</button>
+      <div class="dropdowns">
+        <select>
+          <option>- Select Algorithm -</option>
+          <option>ROT Encryption</option>
+        </select>
+      </div>
+      <div class="plaintext-div">
+        <textarea></textarea>
+      </div>
+      <div class="ciphertext-div">
+        <textarea></textarea>
+      </div>
+      <div class="submit-div">
+        <button type="submit">Submit</button>
+      </div>
     </form>
   </body>
 </html>
