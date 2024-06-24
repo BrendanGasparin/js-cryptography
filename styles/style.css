@@ -5,6 +5,17 @@
 }
 
 html {
-    color: #ffffff;
     background-color: #000000;
+    color: #ffffff;
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1, p, form {
+    margin: 1rem;
+}
+
+h1 {
+    font-family: 'Playwrite US Trad', cursive;
+    font-size: 2rem;
 }
