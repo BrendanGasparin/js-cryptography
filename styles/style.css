@@ -27,3 +27,7 @@ form {
 textarea {
     height: 6rem;
 }
+
+select {
+    color: #000000;
+}
