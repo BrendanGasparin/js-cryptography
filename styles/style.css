@@ -19,3 +19,7 @@ h1 {
     font-family: 'Playwrite US Trad', cursive;
     font-size: 2rem;
 }
+
+form {
+    display: flex;
+}
