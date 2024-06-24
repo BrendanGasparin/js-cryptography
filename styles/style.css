@@ -23,3 +23,7 @@ h1 {
 form {
     display: flex;
 }
+
+textarea {
+    height: 6rem;
+}
