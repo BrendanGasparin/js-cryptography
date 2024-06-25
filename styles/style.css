@@ -33,7 +33,7 @@ select {
     padding: 0.1rem 0;
 }
 
-.dropdowns, .decrypt-div, .encrypt-div {
+.dropdowns, .decrypt-div, .encrypt-div, .rot-div {
     display: flex;
     flex-direction: column;
 }
@@ -42,7 +42,7 @@ select {
     align-items: left;
 }
 
-.encrypt-div {
+.encrypt-div, .rot-div, .rot-number {
     align-items: right;
 }
 
