@@ -33,12 +33,12 @@ select {
     padding: 0.1rem 0;
 }
 
-.dropdowns, .encrypt-div {
+.dropdowns, .decrypt-div, .encrypt-div {
     display: flex;
     flex-direction: column;
 }
 
-.dropdowns {
+.decrypt-div, .dropdowns {
     align-items: left;
 }
 
@@ -46,10 +46,10 @@ select {
     align-items: right;
 }
 
-.encrypt-button {
+.decrypt-button, .encrypt-button {
     padding: 0.1rem 1rem;
 }
 
-select, .encrypt-button {
+select, .decrypt-button, .encrypt-button {
     font-size: 1rem;
 }
