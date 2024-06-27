@@ -38,6 +38,10 @@ select {
     flex-direction: column;
 }
 
+.rot-div {
+    display: none;
+}
+
 .decrypt-div, .dropdowns {
     align-items: left;
 }
