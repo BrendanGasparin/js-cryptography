@@ -12,8 +12,14 @@ function changeAlgorithm() {
 function decrypt(event) {
     event.preventDefault();
     const algorithm = document.querySelector('.algorithm-selector').value;
+    const errorBox = document.querySelector('.error-box');
 
+    if (algorithm === "none") {
+        errorBox.style.display = "block"
+        document.querySelector(".error-message").innerHTML = "You must select an algorithm";
+    }
     if (algorithm === "rot") {
+        errorBox.style.display = "none";
         rotDecryption();
     }
 }
@@ -21,8 +27,14 @@ function decrypt(event) {
 function encrypt(event) {
     event.preventDefault();
     const algorithm = document.querySelector('.algorithm-selector').value;
+    const errorBox = document.querySelector('.error-box');
 
+    if (algorithm === "none") {
+        document.querySelector('.error-box').style.display = "block";
+        document.querySelector(".error-message").innerHTML = "You must select an algorithm";
+    }
     if (algorithm === "rot") {
+        errorBox.style.display = "none";
         rotEncryption();
     }
 }
