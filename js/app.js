@@ -51,10 +51,10 @@ function rotDecryption() {
     for (let i = 0; i < length; i++) {
         const char = cipherText[i];
 
-        if (isAlphabeticalUpper.test(cipherText[i])) {
+        if (isAlphabeticalUpper.test(char)) {
             plainText += String.fromCharCode(((char.charCodeAt(0) - 65 + 26 - rotNumber) % 26) + 65);
         }
-        else if (isAlphabeticalLower.test(cipherText[i])) {
+        else if (isAlphabeticalLower.test(char)) {
             plainText += String.fromCharCode(((char.charCodeAt(0) - 97 + 26 - rotNumber) % 26) + 97);
         }
         else {
@@ -77,10 +77,10 @@ function rotEncryption() {
     for (let i = 0; i < length; i++) {
         const char = plaintext[i];
  
-        if (isAlphabeticalUpper.test(plaintext[i])) {
+        if (isAlphabeticalUpper.test(char)) {
             ciphertext += String.fromCharCode(((char.charCodeAt(0) - 65 + rotNumber) % 26) + 65);
         }
-        else if (isAlphabeticalLower.test(plaintext[i])) {
+        else if (isAlphabeticalLower.test(char)) {
             ciphertext += String.fromCharCode(((char.charCodeAt(0) - 97 + rotNumber) % 26) + 97);
         }
         else {
