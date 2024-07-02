@@ -9,6 +9,15 @@ function changeAlgorithm() {
     }
 }
 
+function decrypt(event) {
+    event.preventDefault();
+    const algorithm = document.querySelector('.algorithm-selector').value;
+
+    if (algorithm === "rot") {
+        rotDecryption();
+    }
+}
+
 function encrypt(event) {
     event.preventDefault();
     const algorithm = document.querySelector('.algorithm-selector').value;
@@ -16,6 +25,32 @@ function encrypt(event) {
     if (algorithm === "rot") {
         rotEncryption();
     }
+}
+
+function rotDecryption() {
+    const rotNumber = parseInt(document.querySelector('.rot-number').value, 10);
+    const cipherText = document.querySelector('.ciphertext').value;
+    const plainTextArea = document.querySelector('.plaintext');
+    const length = cipherText.length;
+    const isAlphabeticalUpper = /^[A-Z]/;
+    const isAlphabeticalLower = /^[a-z]/;
+    let plainText = '';
+    
+    for (let i = 0; i < length; i++) {
+        const char = cipherText[i];
+
+        if (isAlphabeticalUpper.test(cipherText[i])) {
+            plainText += String.fromCharCode(((char.charCodeAt(0) - 65 + 26 - rotNumber) % 26) + 65);
+        }
+        else if (isAlphabeticalLower.test(cipherText[i])) {
+            plainText += String.fromCharCode(((char.charCodeAt(0) - 97 + 26 - rotNumber) % 26) + 97);
+        }
+        else {
+            plainText += char;
+        }
+    }
+
+    plainTextArea.value = plainText;
 }
 
 function rotEncryption() {
@@ -29,7 +64,7 @@ function rotEncryption() {
     
     for (let i = 0; i < length; i++) {
         const char = plaintext[i];
-        console.log("Plaintext character is " + char);
+ 
         if (isAlphabeticalUpper.test(plaintext[i])) {
             ciphertext += String.fromCharCode(((char.charCodeAt(0) - 65 + rotNumber) % 26) + 65);
         }
@@ -39,7 +74,6 @@ function rotEncryption() {
         else {
             ciphertext += char;
         }
-        console.log("Ciphertext character is " + ciphertext[i]);
     }
 
     ciphertextArea.value = ciphertext;
@@ -48,6 +82,7 @@ function rotEncryption() {
 function setupEvents() {
     document.querySelector('.algorithm-selector').addEventListener('change', changeAlgorithm);
     document.querySelector('.encrypt-button').addEventListener('click', encrypt);
+    document.querySelector('.decrypt-button').addEventListener('click', decrypt);
 }
 
 document.addEventListener('DOMContentLoaded', setupEvents);
