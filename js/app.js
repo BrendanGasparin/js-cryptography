@@ -42,9 +42,12 @@ function encrypt(event) {
         document.querySelector('.error-box').style.display = "block";
         document.querySelector(".error-message").innerHTML = "You must select an algorithm";
     }
-    if (algorithm === "rot") {
+    else if (algorithm === "rot") {
         errorBox.style.display = "none";
         rotEncryption();
+    }
+    else if (algorithm === "substitution") {
+        errorBox.style.display = "none";
     }
 }
 
