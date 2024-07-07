@@ -48,6 +48,7 @@ function encrypt(event) {
     }
     else if (algorithm === "substitution") {
         errorBox.style.display = "none";
+        substitutionEncrypt();
     }
 }
 
@@ -109,20 +110,70 @@ function setupEvents() {
     document.querySelector('.decrypt-button').addEventListener('click', decrypt);
 }
 
-function subsitutionEncrypt() {
+function substitutionEncrypt() {
     const plaintext = document.querySelector('.plaintext').value;
-    const ciphertextArea = document.querySelector('.ciphertext');
+    const cipherTextarea = document.querySelector('.ciphertext');
     const cipher = document.querySelector('.substitution-textarea').value;
     const length = plaintext.length;
     const isAlphabeticalUpper = /^[A-Z]/;
     const isAlphabeticalLower = /^[a-z]/;
     const cipherLength = 26;
-    let ciphertext = '';
+    let ciphertext = "";
+    let alphabetCount = new Array(cipherLength);
+    let isCharactersRepeat = false;
 
+    // Check cipher is the correct length
     if (cipher.length !== cipherLength) {
-        document.querySelector('.error-box').style.display = "block";
-        document.querySelector('.error-message').innerHTML = "Cipher must be 26 characters.";
+        alphabetWarning();
         return;
+    }
+
+    // Initialize the count of letters
+    for (let i = 0; i < cipherLength; i++) {
+        alphabetCount[i] = 0;
+    }
+
+    // Check cipher is all alphabetical characters and that none repeat
+    for (let i = 0; i < cipherLength; i++) {
+        const char = cipher[i].toUpperCase();
+        if (isAlphabeticalLower.test(char) === false && isAlphabeticalUpper.test(char) === false) {
+            alphabetWarning();
+            return;
+        }
+        alphabetCount[char.charCodeAt(0) - 65]++;
+    }
+    for (let i = 0; i < cipherLength; i++) {
+        if (alphabetCount[i] !== 1) {
+            document.querySelector('.error-box').style.display = "block";
+            document.querySelector('.error-message').innerHTML = "Cipher must not contain repeating letters.";
+            return;
+        }
+    }
+
+    // Encrypt plaintext to ciphertext using cipher
+    let plaintextLength = plaintext.length;
+    for (let i = 0; i < plaintextLength; i++) {
+        let char = plaintext[i];
+
+        if (isAlphabeticalLower.test(char) == false && isAlphabeticalUpper.test(char) == false) {
+            ciphertext += char;
+        }
+        else if (isAlphabeticalLower.test(char))
+        {
+            ciphertext += cipher[char.charCodeAt(0) - 97];
+        }
+        else {
+            ciphertext += cipher[char.charCodeAt(0) - 65];
+        }
+    }
+
+    cipherTextarea.value = ciphertext;
+
+
+    // Warn that cipher must be 26 alphabetical characters
+    function alphabetWarning() {
+        document.querySelector('.error-box').style.display = "block";
+        document.querySelector('.error-message').innerHTML = "Cipher must be 26 alphabetical characters.";
     }
 }
 
