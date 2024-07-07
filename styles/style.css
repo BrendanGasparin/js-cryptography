@@ -38,7 +38,7 @@ select {
     flex-direction: column;
 }
 
-.rot-div {
+.rot-div, .substitution-div {
     display: none;
 }
 
