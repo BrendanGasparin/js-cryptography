@@ -28,6 +28,9 @@ function decrypt(event) {
         errorBox.style.display = "none";
         rotDecryption();
     }
+    else if (algorithm === "substitution") {
+        errorBox.style.display = "none";
+    }
 }
 
 function encrypt(event) {
