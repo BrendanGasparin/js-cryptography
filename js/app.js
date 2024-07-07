@@ -3,9 +3,15 @@ function changeAlgorithm() {
 
     if (algorithm === "rot") {
         document.querySelector('.rot-div').style.display = 'flex';
+        document.querySelector('.substitution-div').style.display = 'none';
+    }
+    else if (algorithm === "substitution") {
+        document.querySelector('.substitution-div').style.display = 'flex';
+        document.querySelector('.rot-div').style.display = 'none';
     }
     else {
         document.querySelector('.rot-div').style.display = 'none';
+        document.querySelector('.substitution-div').style.display = 'none';
     }
 }
 
@@ -18,7 +24,7 @@ function decrypt(event) {
         errorBox.style.display = "block"
         document.querySelector(".error-message").innerHTML = "You must select an algorithm";
     }
-    if (algorithm === "rot") {
+    else if (algorithm === "rot") {
         errorBox.style.display = "none";
         rotDecryption();
     }
