@@ -109,4 +109,14 @@ function setupEvents() {
     document.querySelector('.decrypt-button').addEventListener('click', decrypt);
 }
 
+function subsitutionEncrypt() {
+    const plaintext = document.querySelector('.plaintext').value;
+    const ciphertextArea = document.querySelector('.ciphertext');
+    const cipher = document.querySelector('.substitution-textarea').value;
+    const length = plaintext.length;
+    const isAlphabeticalUpper = /^[A-Z]/;
+    const isAlphabeticalLower = /^[a-z]/;
+    let ciphertext = '';
+}
+
 document.addEventListener('DOMContentLoaded', setupEvents);
