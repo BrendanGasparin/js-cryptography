@@ -116,7 +116,14 @@ function subsitutionEncrypt() {
     const length = plaintext.length;
     const isAlphabeticalUpper = /^[A-Z]/;
     const isAlphabeticalLower = /^[a-z]/;
+    const cipherLength = 26;
     let ciphertext = '';
+
+    if (cipher.length !== cipherLength) {
+        document.querySelector('.error-box').style.display = "block";
+        document.querySelector('.error-message').innerHTML = "Cipher must be 26 characters.";
+        return;
+    }
 }
 
 document.addEventListener('DOMContentLoaded', setupEvents);
