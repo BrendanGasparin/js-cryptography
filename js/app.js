@@ -126,7 +126,7 @@ function setupEvents() {
 // Decrypts using substitution cipher
 function substitutionDecryption() {
     console.log("Running substitutionDecryption()");
-    const plainTextarea = document.querySelector('.plain-textarea');
+    const plainTextarea = document.querySelector('.plaintext');
     const ciphertext = document.querySelector('.ciphertext').value;
     const cipher = document.querySelector('.substitution-textarea').value;
     const length = ciphertext.length;
@@ -163,6 +163,36 @@ function substitutionDecryption() {
             return;
         }
     }
+
+    // Decrypt ciphertext to plaintext using cipher
+    for (let i = 0; i < length; i++) {
+        const char = ciphertext[i];
+
+        if (isAlphabeticalUpper.test(char) || isAlphabeticalLower.test(char)) {
+            let uppercase = true;
+
+            if (isAlphabeticalLower.test(char))
+                uppercase = false;
+
+            for (let j = 0; j < cipherLength; j++) {
+                if (cipher[j].toUpperCase() === char.toUpperCase()) {
+                    if (uppercase) {
+                        plaintext += String.fromCharCode(65 + j);
+                        break;
+                    }
+                    else {
+                        plaintext += String.fromCharCode(97 + j);
+                        break;
+                    }
+                }
+            }
+        }
+        else
+            plaintext += ciphertext[i];
+    }
+
+    // Write plaintext to output
+    plainTextarea.value = plaintext;
 }
 
 // Encrypts using substitution cipher
