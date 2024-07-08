@@ -237,7 +237,7 @@ function substitutionEncryption() {
     }
 
     // Encrypt plaintext to ciphertext using cipher
-    let plaintextLength = plaintext.length;
+    const plaintextLength = plaintext.length;
     for (let i = 0; i < plaintextLength; i++) {
         let char = plaintext[i];
 
@@ -246,10 +246,10 @@ function substitutionEncryption() {
         }
         else if (isAlphabeticalLower.test(char))
         {
-            ciphertext += cipher[char.charCodeAt(0) - 97];
+            ciphertext += cipher[char.charCodeAt(0) - 97].toLowerCase();
         }
         else {
-            ciphertext += cipher[char.charCodeAt(0) - 65];
+            ciphertext += cipher[char.charCodeAt(0) - 65].toUpperCase();
         }
     }
 
