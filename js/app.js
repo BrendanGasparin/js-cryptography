@@ -1,3 +1,9 @@
+// Warn that substitution cipher must be 26 alphabetical characters
+function alphabetWarning() {
+    document.querySelector('.error-box').style.display = "block";
+    document.querySelector('.error-message').innerHTML = "Cipher must be 26 alphabetical characters.";
+}
+
 function changeAlgorithm() {
     const algorithm = document.querySelector('.algorithm-selector').value;
 
@@ -17,6 +23,7 @@ function changeAlgorithm() {
 
 function decrypt(event) {
     event.preventDefault();
+    console.log("decrypt() fired.");
     const algorithm = document.querySelector('.algorithm-selector').value;
     const errorBox = document.querySelector('.error-box');
 
@@ -29,7 +36,9 @@ function decrypt(event) {
         rotDecryption();
     }
     else if (algorithm === "substitution") {
+        console.log("Algorithm rule fired.");
         errorBox.style.display = "none";
+        substitutionDecryption();
     }
 }
 
@@ -48,7 +57,7 @@ function encrypt(event) {
     }
     else if (algorithm === "substitution") {
         errorBox.style.display = "none";
-        substitutionEncrypt();
+        substitutionEncryption();
     }
 }
 
@@ -110,7 +119,7 @@ function setupEvents() {
     document.querySelector('.decrypt-button').addEventListener('click', decrypt);
 }
 
-function substitutionEncrypt() {
+function substitutionEncryption() {
     const plaintext = document.querySelector('.plaintext').value;
     const cipherTextarea = document.querySelector('.ciphertext');
     const cipher = document.querySelector('.substitution-textarea').value;
@@ -168,12 +177,46 @@ function substitutionEncrypt() {
     }
 
     cipherTextarea.value = ciphertext;
+}
 
+function substitutionDecryption() {
+    console.log("Running substitutionDecryption()");
+    const plainTextarea = document.querySelector('.plain-textarea');
+    const ciphertext = document.querySelector('.ciphertext').value;
+    const cipher = document.querySelector('.substitution-textarea').value;
+    const length = ciphertext.length;
+    const isAlphabeticalUpper = /^[A-Z]/;
+    const isAlphabeticalLower = /^[a-z]/;
+    const cipherLength = 26;
+    let plaintext = "";
+    let alphabetCount = new Array(cipherLength);
 
-    // Warn that cipher must be 26 alphabetical characters
-    function alphabetWarning() {
-        document.querySelector('.error-box').style.display = "block";
-        document.querySelector('.error-message').innerHTML = "Cipher must be 26 alphabetical characters.";
+    // Check cipher is the correct length
+    if (cipher.length !== cipherLength) {
+        alphabetWarning();
+        return;
+    }
+
+    // Initialize the count of letters
+    for (let i = 0; i < cipherLength; i++) {
+        alphabetCount[i] = 0;
+    }
+
+    // Check cipher is all alphabetical characters and that none repeat
+    for (let i = 0; i < cipherLength; i++) {
+        const char = cipher[i].toUpperCase();
+        if (isAlphabeticalLower.test(char) === false && isAlphabeticalUpper.test(char) === false) {
+            alphabetWarning();
+            return;
+        }
+        alphabetCount[char.charCodeAt(0) - 65]++;
+    }
+    for (let i = 0; i < cipherLength; i++) {
+        if (alphabetCount[i] !== 1) {
+            document.querySelector('.error-box').style.display = "block";
+            document.querySelector('.error-message').innerHTML = "Cipher must not contain repeating letters.";
+            return;
+        }
     }
 }
 
