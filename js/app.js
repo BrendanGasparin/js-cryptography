@@ -23,7 +23,6 @@ function changeAlgorithm() {
 
 function decrypt(event) {
     event.preventDefault();
-    console.log("decrypt() fired.");
     const algorithm = document.querySelector('.algorithm-selector').value;
     const errorBox = document.querySelector('.error-box');
 
@@ -36,7 +35,6 @@ function decrypt(event) {
         rotDecryption();
     }
     else if (algorithm === "substitution") {
-        console.log("Algorithm rule fired.");
         errorBox.style.display = "none";
         substitutionDecryption();
     }
