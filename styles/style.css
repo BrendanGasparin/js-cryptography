@@ -45,7 +45,7 @@ select {
     flex-direction: column;
 }
 
-.rot-div, .substitution-div {
+.rot-div, .substitution-div, .description-div {
     display: none;
 }
 
@@ -78,6 +78,10 @@ select, .decrypt-button, .encrypt-button {
 .red-exclamation {
     color: #ff0000;
     font-size: 1.4em;
+}
+
+.bold {
+    font-weight: 600;
 }
 
 @media only screen and (min-width: 768px) {

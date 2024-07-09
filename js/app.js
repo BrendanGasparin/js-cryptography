@@ -11,14 +11,19 @@ function changeAlgorithm() {
     if (algorithm === "rot") {
         document.querySelector('.rot-div').style.display = 'flex';
         document.querySelector('.substitution-div').style.display = 'none';
+        document.querySelector('.description-div').style.display = 'block';
+        document.querySelector('.description').innerHTML = 'A Caesar cipher encrypts each letter by shifting it along the alphabet by n places, where n is the number in ROT-n.';
     }
     else if (algorithm === "substitution") {
         document.querySelector('.substitution-div').style.display = 'flex';
         document.querySelector('.rot-div').style.display = 'none';
+        document.querySelector('.description-div').style.display = 'block';
+        document.querySelector('.description').innerHTML = 'A substitution cipher encrypts each letter according to a cipher where each letter of the sequential alphabet is replaced by another letter of the alphabet, with no letters repeating.';
     }
     else {
         document.querySelector('.rot-div').style.display = 'none';
         document.querySelector('.substitution-div').style.display = 'none';
+        document.querySelector('.description-div').style.display = 'none';
     }
 }
 
