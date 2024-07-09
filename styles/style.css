@@ -78,3 +78,10 @@ select, .decrypt-button, .encrypt-button {
     color: #ff0000;
     font-size: 1.4em;
 }
+
+@media only screen and (min-width: 768px) {
+    .body-div {
+        width: 480px;
+        margin: 0 auto;
+    }
+}
