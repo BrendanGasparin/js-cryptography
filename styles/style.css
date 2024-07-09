@@ -24,6 +24,10 @@ form {
     display: flex;
 }
 
+.column {
+    width: 50%;
+}
+
 textarea {
     height: 6rem;
 }
