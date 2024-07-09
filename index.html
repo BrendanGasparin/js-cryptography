@@ -17,15 +17,15 @@
     <form>
       <div>
         <div class="plaintext-div">
-          <p>Plaintext:</p>
-          <textarea class="plaintext"></textarea>
+          <p><label for="plaintext">Plaintext:</label></p>
+          <textarea class="plaintext" id="plaintext"></textarea>
           <div class="decrypt-div">
             <button class="decrypt-button" type="submit">Decrypt</button>
           </div>
           <div class="dropdowns">
-            <p>Algorithm:</p>
+            <p><label for="algorithm-selector">Algorithm:</label></p>
             <div>
-              <select class="algorithm-selector">
+              <select class="algorithm-selector" id="algorithm-selector">
                 <option value="none">- Select Algorithm -</option>
                 <option value="rot">Caesar Cipher</option>
                 <option value="substitution">Substitution Cipher</option>
@@ -36,15 +36,15 @@
       </div>
       <div>
         <div class="ciphertext-div">
-          <p>Ciphertext:</p>
-            <textarea class="ciphertext"></textarea>
+          <p><label for="ciphertext">Ciphertext:</label></p>
+            <textarea class="ciphertext" id="ciphertext"></textarea>
         </div>
         <div class="encrypt-div">
           <button class="encrypt-button" type="submit">Encrypt</button>
         </div>
         <div class="rot-div">
-          <p>Cipher:</p>
-          <select class="rot-number">
+          <p><label for="rot-number">Cipher:</label></p>
+          <select class="rot-number" id="rot-number">
             <option value="1">ROT-1</option>
             <option value="2">ROT-2</option>
             <option value="3">ROT-3</option>
@@ -74,8 +74,8 @@
           </select>
         </div>
         <div class="substitution-div">
-          <p>Cipher:</p>
-          <textarea class="substitution-textarea"></textarea>
+          <p><label for="substitution-textarea">Cipher:</label></p>
+          <textarea class="substitution-textarea" id="substitution-textarea"></textarea>
         </div>
       </div>
     </form>

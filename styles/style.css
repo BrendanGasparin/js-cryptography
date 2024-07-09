@@ -33,7 +33,7 @@ select {
     padding: 0.1rem 0;
 }
 
-.dropdowns, .decrypt-div, .encrypt-div, .rot-div {
+.dropdowns, .decrypt-div, .encrypt-div, .rot-div, .substitution-div {
     display: flex;
     flex-direction: column;
 }
