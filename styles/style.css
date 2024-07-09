@@ -37,6 +37,7 @@ textarea {
 select {
     color: #000000;
     padding: 0.1rem 0;
+    width: 100%;
 }
 
 .dropdowns, .decrypt-div, .encrypt-div, .rot-div, .substitution-div {
