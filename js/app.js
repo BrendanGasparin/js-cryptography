@@ -12,7 +12,7 @@ function changeAlgorithm() {
         document.querySelector('.rot-div').style.display = 'flex';
         document.querySelector('.substitution-div').style.display = 'none';
         document.querySelector('.description-div').style.display = 'block';
-        document.querySelector('.description').innerHTML = 'A Caesar cipher encrypts each letter by shifting it along the alphabet by n places, where n is the number in ROT-n.';
+        document.querySelector('.description').innerHTML = 'A Caesar cipher encrypts each letter by shifting it along the alphabet by <em>n</em> places, where <em>n</em> is the number in ROT-<em>n</em>.';
     }
     else if (algorithm === "substitution") {
         document.querySelector('.substitution-div').style.display = 'flex';
